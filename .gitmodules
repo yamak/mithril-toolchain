@@ -1,6 +1,7 @@
 [submodule "llvm/llvm-project"]
 	path = llvm/llvm-project
 	url = https://github.com/yamak/llvm-project.git
+	branch = xpac_support
 [submodule "picolibc/picolibc-src"]
 	path = picolibc/picolibc-src
 	url = https://github.com/picolibc/picolibc.git
