@@ -27,7 +27,7 @@ set(TOOLCHAIN_BIN_DIR "${CMAKE_BINARY_DIR}/llvm/llvm-build/bin")
 
 # Create cross-file content
 file(WRITE ${PICOLIBC_CROSS_FILE} "[binaries]\n")
-file(APPEND ${PICOLIBC_CROSS_FILE} "c = ['${TOOLCHAIN_BIN_DIR}/clang', '--target=riscv32-unknown-elf', '-march=rv32imc', '-mabi=ilp32', '-fuse-ld=ld.lld', '-fno-pic']\n")
+file(APPEND ${PICOLIBC_CROSS_FILE} "c = ['${TOOLCHAIN_BIN_DIR}/clang', '--target=riscv32-unknown-elf', '-march=rv32imc_xpac', '-mabi=ilp32', '-fuse-ld=ld.lld', '-fno-pic', '-mret-xpac']\n")
 file(APPEND ${PICOLIBC_CROSS_FILE} "ar = '${TOOLCHAIN_BIN_DIR}/llvm-ar'\n")
 file(APPEND ${PICOLIBC_CROSS_FILE} "nm = '${TOOLCHAIN_BIN_DIR}/llvm-nm'\n")
 file(APPEND ${PICOLIBC_CROSS_FILE} "ranlib = '${TOOLCHAIN_BIN_DIR}/llvm-ranlib'\n")

@@ -11,6 +11,10 @@ This project builds a minimal bare-metal toolchain for RISC-V 32-bit targets:
 - **Picolibc**: Minimal C library (optimized for bare-metal)
 - **Compiler-RT**: LLVM builtins (replacement for libgcc)
 
+## Documentation
+
+- [Mithril PAC Specification](docs/mithril_pac.md) — Hardware-accelerated CFI architecture
+
 ## Requirements
 
 - CMake 3.20+
