@@ -4,7 +4,8 @@
 	branch = xpac_support
 [submodule "picolibc/picolibc-src"]
 	path = picolibc/picolibc-src
-	url = https://github.com/picolibc/picolibc.git
+	url = https://github.com/yamak/picolibc.git
+	branch = xpac_support
 [submodule "gdb/binutils-gdb"]
 	path = gdb/binutils-gdb
 	url = https://github.com/bminor/binutils-gdb.git
