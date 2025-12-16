@@ -80,7 +80,7 @@ set(LLVM_BUILTIN_TARGETS
 set(COMPILER_RT_CMAKE_SYSTEM_NAME Generic CACHE STRING "")
 set(COMPILER_RT_CMAKE_SYSTEM_PROCESSOR RISCV CACHE STRING "")
 
-set(RV32_FLAGS "-march=rv32imac_zicsr_zifencei_xpac -mabi=ilp32 -mret-xpac")
+set(RV32_FLAGS "-march=rv32imac_zicsr_zifencei_xpac -mabi=ilp32 -mxpac-ret")
 
 set(BUILTINS_riscv32-unknown-elf_CMAKE_C_FLAGS
     "${RV32_FLAGS}" CACHE STRING "")
