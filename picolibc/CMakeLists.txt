@@ -25,9 +25,18 @@ set(PICOLIBC_CROSS_FILE "${CMAKE_CURRENT_BINARY_DIR}/riscv32-clang.txt")
 # Compiler paths from built LLVM toolchain
 set(TOOLCHAIN_BIN_DIR "${CMAKE_BINARY_DIR}/llvm/llvm-build/bin")
 
+# Configure flags based on XPAC support
+if(MITHRIL_ENABLE_XPAC)
+    set(PICOLIBC_MARCH "rv32imc_xpac")
+    set(PICOLIBC_XPAC_FLAG ", '-mxpac-ret'")
+else()
+    set(PICOLIBC_MARCH "rv32imc")
+    set(PICOLIBC_XPAC_FLAG "")
+endif()
+
 # Create cross-file content
 file(WRITE ${PICOLIBC_CROSS_FILE} "[binaries]\n")
-file(APPEND ${PICOLIBC_CROSS_FILE} "c = ['${TOOLCHAIN_BIN_DIR}/clang', '--target=riscv32-unknown-elf', '-march=rv32imc_xpac', '-mabi=ilp32', '-fuse-ld=ld.lld', '-fno-pic', '-mxpac-ret']\n")
+file(APPEND ${PICOLIBC_CROSS_FILE} "c = ['${TOOLCHAIN_BIN_DIR}/clang', '--target=riscv32-unknown-elf', '-march=${PICOLIBC_MARCH}', '-mabi=ilp32', '-fuse-ld=ld.lld', '-fno-pic'${PICOLIBC_XPAC_FLAG}]\n")
 file(APPEND ${PICOLIBC_CROSS_FILE} "ar = '${TOOLCHAIN_BIN_DIR}/llvm-ar'\n")
 file(APPEND ${PICOLIBC_CROSS_FILE} "nm = '${TOOLCHAIN_BIN_DIR}/llvm-nm'\n")
 file(APPEND ${PICOLIBC_CROSS_FILE} "ranlib = '${TOOLCHAIN_BIN_DIR}/llvm-ranlib'\n")

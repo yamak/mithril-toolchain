@@ -7,6 +7,17 @@ if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
         "Installation prefix for the toolchain" FORCE)
 endif()
 
+###############################
+# XPAC Configuration
+###############################
+
+set(MITHRIL_ENABLE_XPAC ON CACHE BOOL "Enable XPAC (Pointer Authentication) support" FORCE)
+
+if(MITHRIL_ENABLE_XPAC)
+    message(STATUS "XPAC support: ENABLED")
+else()
+    message(STATUS "XPAC support: DISABLED")
+endif()
 
 ###############################
 # Submodule management

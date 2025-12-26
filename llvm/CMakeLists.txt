@@ -80,14 +80,19 @@ set(LLVM_BUILTIN_TARGETS
 set(COMPILER_RT_CMAKE_SYSTEM_NAME Generic CACHE STRING "")
 set(COMPILER_RT_CMAKE_SYSTEM_PROCESSOR RISCV CACHE STRING "")
 
-set(RV32_FLAGS "-march=rv32imac_zicsr_zifencei_xpac -mabi=ilp32 -mxpac-ret")
+# Configure flags based on XPAC support
+if(MITHRIL_ENABLE_XPAC)
+    set(RV32_FLAGS "-march=rv32imac_zicsr_zifencei_xpac -mabi=ilp32 -mxpac-ret")
+else()
+    set(RV32_FLAGS "-march=rv32imac_zicsr_zifencei -mabi=ilp32")
+endif()
 
 set(BUILTINS_riscv32-unknown-elf_CMAKE_C_FLAGS
-    "${RV32_FLAGS}" CACHE STRING "")
+    "${RV32_FLAGS}" CACHE STRING "" FORCE)
 set(BUILTINS_riscv32-unknown-elf_CMAKE_CXX_FLAGS
-    "${RV32_FLAGS}" CACHE STRING "")
+    "${RV32_FLAGS}" CACHE STRING "" FORCE)
 set(BUILTINS_riscv32-unknown-elf_CMAKE_ASM_FLAGS
-    "${RV32_FLAGS}" CACHE STRING "")
+    "${RV32_FLAGS}" CACHE STRING "" FORCE)
 
 # Bare-metal builtins only (no OS)
 set(BUILTINS_riscv32-unknown-elf_COMPILER_RT_BAREMETAL_BUILD ON CACHE BOOL "")
